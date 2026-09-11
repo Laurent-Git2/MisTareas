@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Accueil";
+}
+
+<div class="container py-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-6">
+
+            <span class="badge bg-primary mb-3 fs-6">
+                ✔ Organisez votre quotidien simplement
+            </span>
+
+            <h1 class="display-4 fw-bold mb-4">
+                Bienvenue dans votre espace personnel d'organisation
+            </h1>
+
+            <p class="lead">
+                Gérez vos tâches, définissez leurs priorités et suivez leur avancement en toute simplicité.
+            </p>
+
+            <p class="text-muted mb-4">
+                MisTareas est votre gestionnaire personnel de tâches.
+                Créez, modifiez et suivez vos activités grâce à une interface claire et intuitive.
+            </p>
+
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a asp-controller="Tareas"
+                   asp-action="Index"
+                   class="btn btn-primary btn-lg me-2">
+                    📋 Mes tâches
+                </a>
+
+                <a asp-controller="Tareas"
+                   asp-action="Create"
+                   class="btn btn-outline-primary btn-lg">
+                    ➕ Nouvelle tâche
+                </a>
+            }
+            else
+            {
+                <a asp-area="Identity"
+                   asp-page="/Account/Register"
+                   class="btn btn-primary btn-lg me-2">
+                    Créer un compte
+                </a>
+
+                <a asp-area="Identity"
+                   asp-page="/Account/Login"
+                   class="btn btn-outline-primary btn-lg">
+                    Se connecter
+                </a>
+            }
+
+        </div>
+
+        <div class="col-lg-6 text-center">
+
+            <a asp-controller="Tareas"
+               asp-action="Index">
+
+                <img src="~/imagen/orga1.png"
+                     alt="Mes tâches"
+                     class="img-fluid hero-image"
+                     title="Accéder à mes tâches" />
+
+            </a>
+
+            <p class="text-muted mt-3">
+                Cliquez sur l'illustration pour accéder directement à vos tâches.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
